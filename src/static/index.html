@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>在线考试系统</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- 文件上传界面 -->
+        <div id="upload-section" class="section">
+            <div class="upload-card">
+                <h1>在线考试系统</h1>
+                <p>请上传包含考试题目的Word文档</p>
+                <div class="upload-area" id="upload-area">
+                    <div class="upload-icon">📄</div>
+                    <p>拖拽文件到此处或点击选择文件</p>
+                    <input type="file" id="file-input" accept=".docx,.doc" hidden>
+                    <button class="upload-btn" onclick="document.getElementById('file-input').click()">选择文件</button>
+                </div>
+                <div id="file-info" class="file-info hidden"></div>
+                <button id="start-exam-btn" class="start-btn hidden">开始考试</button>
+            </div>
+        </div>
+
+        <!-- 考试界面 -->
+        <div id="exam-section" class="section hidden">
+            <div class="exam-header">
+                <div class="exam-info">
+                    <h2>考试进行中</h2>
+                    <div class="progress-info">
+                        <span id="question-counter">第 1 题 / 共 0 题</span>
+                        <div class="progress-bar">
+                            <div id="progress-fill" class="progress-fill"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="score-info">
+                    <span id="current-score">当前得分: 0</span>
+                </div>
+            </div>
+
+            <div class="question-card">
+                <div class="question-type" id="question-type">单选题</div>
+                <div class="question-text" id="question-text"></div>
+                <div class="options-container" id="options-container"></div>
+                <div class="question-actions">
+                    <button id="submit-answer-btn" class="submit-btn" disabled>提交答案</button>
+                </div>
+            </div>
+
+            <div id="answer-feedback" class="answer-feedback hidden">
+                <div class="feedback-content">
+                    <div id="feedback-result" class="feedback-result"></div>
+                    <div id="correct-answer" class="correct-answer"></div>
+                    <button id="next-question-btn" class="next-btn">下一题</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 结果界面 -->
+        <div id="result-section" class="section hidden">
+            <div class="result-card">
+                <h2>考试完成</h2>
+                <div class="final-score">
+                    <div class="score-circle">
+                        <span id="final-score-text">0</span>
+                        <span class="score-label">分</span>
+                    </div>
+                </div>
+                <div class="score-breakdown">
+                    <div class="breakdown-item">
+                        <span>总题数:</span>
+                        <span id="total-questions">0</span>
+                    </div>
+                    <div class="breakdown-item">
+                        <span>正确题数:</span>
+                        <span id="correct-count">0</span>
+                    </div>
+                    <div class="breakdown-item">
+                        <span>错误题数:</span>
+                        <span id="wrong-count">0</span>
+                    </div>
+                    <div class="breakdown-item">
+                        <span>正确率:</span>
+                        <span id="accuracy-rate">0%</span>
+                    </div>
+                </div>
+                <div class="result-actions">
+                    <button id="view-details-btn" class="details-btn">查看答题详情</button>
+                    <button id="restart-btn" class="restart-btn">重新开始</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 答题详情界面 -->
+        <div id="details-section" class="section hidden">
+            <div class="details-card">
+                <h2>答题详情</h2>
+                <div id="details-content" class="details-content"></div>
+                <button id="back-to-result-btn" class="back-btn">返回结果</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
